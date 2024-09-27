@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicesumar Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Unicesumar Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="#users-list">Usuários</a></li>
+                <li><a href="#add-user">Adicionar Usuário</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+     
+    <section id="users-list">
+        <h2>Listagem de Usuários</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Papel</th>
+                    <th>Ativo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                    <td>1</td>
+                    <td>João</td>
+                    <td>joao@example.com</td>
+                    <td>Admin</td>
+                    <td>Sim</td>
+                    <td>
+                        <button>Excluir</button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <button onclick="document.location='#add-user'">Adicionar Novo Usuário</button>
+    </section>
+
+    <!-- Seção de Adição de Usuários -->
+ 

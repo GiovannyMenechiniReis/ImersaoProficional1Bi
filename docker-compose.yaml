@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "mudar123"
+      MYSQL_DATABASE: "unicesumar_blog"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - blog-network
+  
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - blog-network
+
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: "mudar123"
+      DB_DATABASE: "unicesumar_blog"
+    networks:
+      - blog-network
+    volumes:
+      - .:/usr/src/app
+
+  json-server:
+    image: typicode/json-server
+    environment:
+      JSON_SERVER_PORT: 3004
+    volumes:
+      - ./json-server/db.json:/data/db.json
+    command: json-server --watch /data/db.json --port 3004
+    ports:
+      - "3004:3004"
+    networks:
+      - blog-network
+
+networks:
+  blog-network:
+
+volumes:
+  db_data:
